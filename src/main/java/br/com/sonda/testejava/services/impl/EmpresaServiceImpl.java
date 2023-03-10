@@ -44,7 +44,7 @@ public class EmpresaServiceImpl implements EmpresaService {
     @Transactional
     public EmpresaUpdate atualizarEmpresa(Long id, EmpresaUpdate empresaUpdate) throws InvocationTargetException, IllegalAccessException {
         Empresa empresa = empresaRepository.findById(id)
-                .orElseThrow(() -> new EmpresaNotFoundException("Usuário não encontrado!"));
+                .orElseThrow(() -> new EmpresaNotFoundException("Empresa não encontrada!"));
         beanUtils.copyProperties(empresa, empresaUpdate);
         empresaRepository.save(empresa);
         return empresaUpdate;
